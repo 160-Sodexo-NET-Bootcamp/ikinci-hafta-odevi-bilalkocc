@@ -1,4 +1,11 @@
-# İkinci Ödev
 
-Teslim Tarihi 7 Ocak 2022
-[Odev 2.0 With Bonus Part.pdf](https://github.com/Semra4141/Odev/files/7779954/Odev.2.0.With.Bonus.Part.pdf)
+# Akıllı Atık Toplama
+
+Bir çöp toplama ya da atık toplama aracının en optimum ve verimli şekilde kullanılarak en kısa sürede tüm noktalara uğraması amaçlanmaktadır. Araç ve konteyner için CRUD işlemlerinin swagger ekran görüntüleri verilmiştir.
+
+
+## Ekran Görüntüleri
+
+![Uygulama Ekran Görüntüsü](https://raw.githubusercontent.com/160-Sodexo-NET-Bootcamp/ikinci-hafta-odevi-bilalkocc/main/foto/swagger1.PNG?token=GHSAT0AAAAAABPZHBDDKNRZR3UAXEO2JNFMYOYQK2Q)
+
+  

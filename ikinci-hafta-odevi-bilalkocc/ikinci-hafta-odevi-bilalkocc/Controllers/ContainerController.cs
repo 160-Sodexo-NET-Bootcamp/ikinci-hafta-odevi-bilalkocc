@@ -67,5 +67,24 @@ namespace ikinci_hafta_odevi_bilalkocc.Controllers
             return Ok();
         }
 
+
+        [HttpGet]
+        [Route("clustered")]//verilen VehicleId'ye ve bölünmek istenen küme sayısına göre containerların içiçe liste şeklinde döndürülmesi
+        public async Task<IActionResult> GetContainersWithCluster(long vehicleId,int clusterCount)
+        {
+            var containers =  unitOfWork.Containers.GetContainersWithVehicleId(vehicleId).ToList();
+            if (containers is null)
+                return BadRequest();
+            double result = containers.Count() / (double)clusterCount;
+            int clusterLength = (int)Math.Round(result);
+            List<List<Container>> clustered = new List<List<Container>>();
+            
+            while (containers.Any())
+            {
+                clustered.Add(containers.Take(clusterLength).ToList());
+                containers = containers.Skip(clusterLength).ToList();
+            }
+            return Ok(clustered);
+        }
     }
 }

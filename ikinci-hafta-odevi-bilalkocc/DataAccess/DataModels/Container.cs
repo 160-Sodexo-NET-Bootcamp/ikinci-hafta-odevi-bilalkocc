@@ -17,8 +17,9 @@ namespace DataAccess.DataModels
         public decimal Latitude { get; set; }
         [Column(TypeName = "decimal(10, 6)")]
         public decimal Longitude { get; set; }
+        [ForeignKey("Vehicle")]
         public long VehicleId { get; set; }
-        //[ForeignKey("VehicleId")]
-        //public Vehicle Vehicle { get; set; }
+        public virtual Vehicle Vehicle { get; set; }
+        
     }
 }

@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository.ContainerRepo
 {
-    public interface IContainerRepo:IGenericRepo<Container>
+    public interface IContainerRepo : IGenericRepo<Container>
     {
-
+        void DeleteContainerWithVehicleId(long id);
+        public IEnumerable<Container> GetContainersWithVehicleId(long id);
     }
 }

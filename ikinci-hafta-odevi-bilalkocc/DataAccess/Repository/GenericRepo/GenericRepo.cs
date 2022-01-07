@@ -9,12 +9,12 @@ namespace DataAccess.Repository.GenericRepo
 {
     public class GenericRepo<T> : IGenericRepo<T> where T : class
     {
-        private readonly AppDbContext context;
+        protected AppDbContext _context;
         internal DbSet<T> dbSet;
 
         public GenericRepo(AppDbContext context)
         {
-            this.context = context;
+            this._context = context;
             dbSet = context.Set<T>();
             
         }
@@ -32,8 +32,7 @@ namespace DataAccess.Repository.GenericRepo
 
         public async Task<IEnumerable<T>> GetAll()
         {
-            //return await dbSet.ToListAsync();
-            return await context.Set<T>().ToListAsync();
+            return await _context.Set<T>().ToListAsync();
         }
 
         public async Task<T> GetByExp(Expression<Func<T, bool>> expression)

@@ -59,27 +59,21 @@ namespace ikinci_hafta_odevi_bilalkocc.Controllers
             var deleted = await unitOfWork.Vehicles.GetByExp(x => x.Id == id);
             if (deleted is null)
                 return BadRequest();
+            unitOfWork.Containers.DeleteContainerWithVehicleId(id);
             unitOfWork.Vehicles.Delete(deleted);
             unitOfWork.Complete();
             return Ok();
         }
 
         [HttpGet]
-        [Route("Containers")]
+        [Route("Containers")]//id'si verilen vehicle'ın baglantılı oldugu tüm containerları listeleme
         public async Task<IActionResult> GetContainersOfVehicle([FromQuery] long id)
         {
             var allContainers = await unitOfWork.Containers.GetAll();
             return Ok(allContainers.Where(x => x.VehicleId == id));
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetByVehicleIdOfContainers(long id)
-        { 
-            var containers = await unitOfWork.Containers.GetAll();
-            var result = containers.Where(x => x.VehicleId == id).ToList();
-
-            return Ok(result);
-        }
+       
 
     }
 }
